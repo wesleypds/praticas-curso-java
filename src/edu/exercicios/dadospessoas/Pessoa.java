@@ -16,4 +16,9 @@ public class Pessoa {
     public char getSexo() {
         return sexo;
     }
+
+    @Override
+    public String toString() {
+        return "Altura: " + altura + ", Sexo: " + sexo;
+    }
 }

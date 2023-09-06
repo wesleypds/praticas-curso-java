@@ -18,7 +18,7 @@ public class Produto {
     }
 
     public double totalValorDoEstoque(){
-        return (double) quantidade * preco;
+        return quantidade * preco;
     }
 
     public void addProduto(int quantidade){

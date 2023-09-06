@@ -3,16 +3,15 @@ package edu.exercicios.somavetor;
 import java.util.Scanner;
 
 public class App {
-    private double[] vetor;
-    private double soma;
+    private static double[] vetor;
+    private static double soma;
 
     public static void main(String[] args) throws Exception {
-        App app = new App();
-        app.preencheArray();
-        app.imprimirArray();
+        preencheArray();
+        imprimirArray();
     }
 
-    public void preencheArray() {
+    public static void preencheArray() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Quantos numeros voce vai digitar: ");
         int n = sc.nextInt();
@@ -25,12 +24,12 @@ public class App {
         sc.close();
     }
 
-    public void imprimirArray() {
+    public static void imprimirArray() {
         System.out.print("VALORES: ");
         for (int i = 0; i < vetor.length; i++) {
             System.out.printf("%.2f ", vetor[i]);
         }
-        System.out.printf("\nSOMA: %.2f", soma);
-        System.out.printf("\nMEDIA: %.2f", soma / vetor.length);
+        System.out.printf("%nSOMA: %.2f", soma);
+        System.out.printf("%nMEDIA: %.2f", soma / vetor.length);
     }
 }

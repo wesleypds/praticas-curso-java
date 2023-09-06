@@ -1,43 +1,60 @@
 package edu.exercicios.pensionato;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class App {
-    private String nome;
-    private String email;
-    private int numeroDoQuarto;
-    private Estudante[] estudante = new Estudante[10];
+    private List<Quarto> listQuartos = new ArrayList<>();
+    private Scanner sc = new Scanner(System.in); 
 
     public static void main(String[] args) {
         App app = new App();
-        app.preecherArrayEstudante();
+        app.cadastrarQuartos();
+        app.preecherQuartos();
         app.imprimirRelatorioQuartosOcupados();
     }
 
-    public void preecherArrayEstudante() {
-        Scanner sc = new Scanner(System.in);
+    public void cadastrarQuartos() {
+        System.out.print("Quantidade de quartos a serem criados: ");
+        int qtd = sc.nextInt();
+        for (int i = 0; i < qtd; i++) {
+            listQuartos.add(new Quarto(i));
+        }
+    }
+
+    public void preecherQuartos() {
         System.out.print("Quantos estudantes vão alugar quarto? ");
         int n = sc.nextInt();
         sc.nextLine();
-        for (int i = 1; i <= n; i++) {
-            System.out.printf("%d° aluguel:\n", i);
+        pularLinha();
+        for (int i = 0; i < n; i++) {
+            System.out.printf("%d° aluguel:%n", i+1);
             System.out.print("Nome........: ");
-            nome = sc.nextLine();
+            String nome = sc.nextLine();
             System.out.print("E-mail......: ");
-            email = sc.nextLine();
+            String email = sc.nextLine();
             System.out.print("N° do quarto: ");
-            numeroDoQuarto = sc.nextInt();
+            int numeroDoQuarto = sc.nextInt();
             sc.nextLine();
-            estudante[numeroDoQuarto] = new Estudante(nome, email, numeroDoQuarto);
+            Estudante estudante = new Estudante(nome, email);
+            listQuartos.get(numeroDoQuarto).setEstudante(estudante);
+            listQuartos.get(numeroDoQuarto).setOcupado(true);
+            pularLinha();
         }
         sc.close();
     }
 
     public void imprimirRelatorioQuartosOcupados() {
-        for (int i = 0; i < estudante.length; i++) {
-            if (estudante[i] != null) {
-                System.out.println(estudante[i]);
+        System.out.println("Quartos alugados:");
+        for (Quarto quarto : listQuartos) {
+            if (Boolean.TRUE.equals(quarto.getOcupado())) {
+                System.out.println(quarto);
             }
         }
+    }
+
+    public void pularLinha() {
+        System.out.println();
     }
 }
