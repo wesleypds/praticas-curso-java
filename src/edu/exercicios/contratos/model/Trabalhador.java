@@ -2,7 +2,6 @@ package edu.exercicios.contratos.model;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import edu.exercicios.contratos.enums.NivelTrabalhador;
@@ -13,6 +12,10 @@ public class Trabalhador {
     private Double baseSalario;
     private List<Contrato> listContratos = new ArrayList<>();
     private Departamento departamento;
+
+    public Trabalhador() {
+
+    }
 
     public Trabalhador(String name, NivelTrabalhador nivelTrabalhador, Double baseSalario) {
         this.name = name;
@@ -62,16 +65,12 @@ public class Trabalhador {
 
     public Double calculaRendimentoDoMes(Integer mes, Integer ano) {
     double totalContratos = 0.0;
-
+    // Use um objeto Calendar para obter o mês e o ano da data do contrato.
+    Calendar calendar = Calendar.getInstance();
     for (Contrato contrato : listContratos) {
-        Date dataContrato = contrato.getData();
-
-        // Use um objeto Calendar para obter o mês e o ano da data do contrato.
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(dataContrato);
+        calendar.setTime(contrato.getData());
         int mesContrato = calendar.get(Calendar.MONTH) + 1; // O mês é baseado em zero, então adicione 1.
         int anoContrato = calendar.get(Calendar.YEAR);
-
         // Verifique se o mês e o ano correspondem aos parâmetros passados.
         if (mesContrato == mes && anoContrato == ano) {
             // Se corresponderem, adicione o valor do contrato ao total.
@@ -79,7 +78,7 @@ public class Trabalhador {
         }
     }
 
-    return totalContratos + baseSalario;
+    return totalContratos + this.baseSalario;
 }
 
 }
