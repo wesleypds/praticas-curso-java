@@ -25,4 +25,10 @@ public class ContaEmpresarial extends Conta {
             this.saldo += valor - 10.0;
         }
     }
+
+    @Override
+    public void sacar(Double valor) {
+        super.sacar(valor);
+        saldo -= 2.0;
+    }
 }

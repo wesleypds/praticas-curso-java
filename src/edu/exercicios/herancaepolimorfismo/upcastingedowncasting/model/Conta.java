@@ -42,6 +42,6 @@ public class Conta {
     }
 
     public void sacar(Double valor) {
-        saldo -= valor;
+        saldo -= (valor + 5);
     }
 }
