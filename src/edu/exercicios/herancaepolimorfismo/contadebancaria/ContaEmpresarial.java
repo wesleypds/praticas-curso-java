@@ -3,6 +3,10 @@ package edu.exercicios.herancaepolimorfismo.contadebancaria;
 public class ContaEmpresarial extends Conta {
     private Double limiteEmprestimo;
 
+    public ContaEmpresarial() {
+        super();
+    }
+
     public ContaEmpresarial(Integer numero, String titular, Double saldo, Double limiteEmprestimo) {
         super(numero, titular, saldo);
         this.limiteEmprestimo = limiteEmprestimo;

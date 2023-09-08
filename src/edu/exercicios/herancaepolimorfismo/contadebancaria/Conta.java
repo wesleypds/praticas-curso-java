@@ -5,6 +5,8 @@ public class Conta {
     private String titular;
     protected Double saldo;
 
+    public Conta() {}
+
     public Conta(Integer numero, String titular, Double saldo) {
         this.numero = numero;
         this.titular = titular;
