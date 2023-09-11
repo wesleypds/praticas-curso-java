@@ -39,6 +39,8 @@ public class App {
             System.out.println("Dado de entrada inválido.");
         } catch (ExcecaoPersonalizada e) {
             System.out.println(e.getMessage());
+        } catch (RuntimeException e) {
+            System.out.println("Erro inesperado.");
         }
 
         sc.close();
