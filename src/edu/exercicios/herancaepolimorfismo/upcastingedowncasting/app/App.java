@@ -21,12 +21,12 @@ public class App {
         Conta conta4 = new ContaPoupanca(1004, "Danielle", 0.0, 0.01);
 
         // Downcasting
-        ContaEmpresarial contaEmpresarial2 = (ContaEmpresarial)conta3;
+        ContaEmpresarial contaEmpresarial2 = (ContaEmpresarial) conta3;
         contaEmpresarial2.emprestimo(400.0);
 
         // ContaEmpresarial contaEmpresarial3 = (ContaEmpresarial)conta4;
         if (conta4 instanceof ContaEmpresarial) {
-            ContaEmpresarial contaEmpresarial3 = (ContaEmpresarial)conta4;
+            ContaEmpresarial contaEmpresarial3 = (ContaEmpresarial) conta4;
             contaEmpresarial3.emprestimo(100.0);
         }
     }
