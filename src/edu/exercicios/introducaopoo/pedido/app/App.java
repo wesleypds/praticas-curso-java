@@ -1,7 +1,6 @@
 package edu.exercicios.introducaopoo.pedido.app;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
