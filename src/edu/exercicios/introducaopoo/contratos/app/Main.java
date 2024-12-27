@@ -1,4 +1,4 @@
-package edu.exercicios.introducaopoo.contratos.programa;
+package edu.exercicios.introducaopoo.contratos.app;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

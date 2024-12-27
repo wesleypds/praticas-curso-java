@@ -2,7 +2,9 @@ package edu.exercicios.introducaopoo.pedido.app;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 
@@ -15,14 +17,15 @@ import edu.exercicios.introducaopoo.pedido.model.Produto;
 public class App {
     public static void main(String[] args) throws ParseException {
         Scanner sc = new Scanner(System.in);
-        SimpleDateFormat dataFormatada = new SimpleDateFormat("dd/MM/yyyy");
+        DateTimeFormatter dataFormatadaCliente = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter dataFormatadaPedido = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         System.out.println("Entre com os dados do cliente:");
         System.out.print("Nome: ");
         String nome = sc.nextLine();
         System.out.print("Email: ");
         String email = sc.nextLine();
         System.out.print("Data de nascimento (DD/MM/AAAA): ");
-        Date dataNascimento = dataFormatada.parse(sc.nextLine());
+        LocalDate dataNascimento = LocalDate.parse(sc.nextLine(), dataFormatadaCliente);
         Cliente cliente = new Cliente(nome, email, dataNascimento);
         System.out.println("Qual a situação do pedido?");
         System.out.println("1 - Pagamento pendente");
@@ -49,7 +52,7 @@ public class App {
                 System.out.println("Opção incorreta!");
                 break;
         }
-        Pedido pedido = new Pedido(new Date(), status, cliente);
+        Pedido pedido = new Pedido(LocalDateTime.parse(LocalDateTime.now().format(dataFormatadaPedido), dataFormatadaPedido), status, cliente);
         System.out.print("Quantos itens tem no pedido? ");
         Integer quantidadeItens = sc.nextInt();
         for (int i = 0; i < quantidadeItens; i++) {
@@ -66,9 +69,8 @@ public class App {
             itemPedido.setProduto(produto);
             pedido.addItem(itemPedido);
         }
-        SimpleDateFormat dataFormatadaMomentoPedido = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         System.out.println("\nHISTÓRICO DO PEDIDO");
-        System.out.print("Momento do pedido: " + dataFormatadaMomentoPedido.format(pedido.getMomento()));
+        System.out.print("Momento do pedido: " + pedido.getMomento());
         System.out.print("\nStatus do pedido: " + pedido.getStatusPedido());
         System.out.print("\nCliente: " + pedido.getCliente());
         System.out.println("\nItens do pedido:");

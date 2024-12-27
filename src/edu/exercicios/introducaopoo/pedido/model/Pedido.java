@@ -1,13 +1,13 @@
 package edu.exercicios.introducaopoo.pedido.model;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import edu.exercicios.introducaopoo.pedido.enums.StatusPedido;
 
 public class Pedido {
-    private Date momento;
+    private LocalDateTime momento;
     private StatusPedido statusPedido;
     private List<ItemPedido> listItemPedidos = new ArrayList<>();
     private Cliente cliente;
@@ -15,17 +15,17 @@ public class Pedido {
     public Pedido() {
     }
 
-    public Pedido(Date momento, StatusPedido statusPedido, Cliente cliente) {
+    public Pedido(LocalDateTime momento, StatusPedido statusPedido, Cliente cliente) {
         this.momento = momento;
         this.statusPedido = statusPedido;
         this.cliente = cliente;
     }
 
-    public Date getMomento() {
+    public LocalDateTime getMomento() {
         return momento;
     }
 
-    public void setMomento(Date momento) {
+    public void setMomento(LocalDateTime momento) {
         this.momento = momento;
     }
 

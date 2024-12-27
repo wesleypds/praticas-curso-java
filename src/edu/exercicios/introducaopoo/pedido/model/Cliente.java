@@ -1,17 +1,17 @@
 package edu.exercicios.introducaopoo.pedido.model;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Cliente {
-    private static SimpleDateFormat dataFormatada = new SimpleDateFormat("dd/MM/yyyy");
+    private static DateTimeFormatter dataFormatada = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private String nome;
     private String email;
-    private Date dataNascimento;
+    private LocalDate dataNascimento;
 
     public Cliente() {}
 
-    public Cliente(String nome, String email, Date dataNascimento) {
+    public Cliente(String nome, String email, LocalDate dataNascimento) {
         this.nome = nome;
         this.email = email;
         this.dataNascimento = dataNascimento;
@@ -33,11 +33,11 @@ public class Cliente {
         this.email = email;
     }
 
-    public Date getDataNascimento() {
+    public LocalDate getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 

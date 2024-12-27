@@ -65,21 +65,21 @@ public class Trabalhador {
     }
 
     public Double calculaRendimentoDoMes(Integer mes, Integer ano) {
-    double totalContratos = 0.0;
-    // Use um objeto Calendar para obter o mês e o ano da data do contrato.
-    Calendar calendar = Calendar.getInstance();
-    for (Contrato contrato : listContratos) {
-        calendar.setTime(contrato.getData());
-        int mesContrato = calendar.get(Calendar.MONTH) + 1; // O mês é baseado em zero, então adicione 1.
-        int anoContrato = calendar.get(Calendar.YEAR);
-        // Verifique se o mês e o ano correspondem aos parâmetros passados.
-        if (mesContrato == mes && anoContrato == ano) {
-            // Se corresponderem, adicione o valor do contrato ao total.
-            totalContratos += contrato.valorTotal(); // Supondo que você tenha um método para obter o valor do contrato.
+        double totalContratos = 0.0;
+        // Use um objeto Calendar para obter o mês e o ano da data do contrato.
+        Calendar calendar = Calendar.getInstance();
+        for (Contrato contrato : listContratos) {
+            calendar.setTime(contrato.getData());
+            int mesContrato = calendar.get(Calendar.MONTH) + 1; // O mês é baseado em zero, então adicione 1.
+            int anoContrato = calendar.get(Calendar.YEAR);
+            // Verifique se o mês e o ano correspondem aos parâmetros passados.
+            if (mesContrato == mes && anoContrato == ano) {
+                // Se corresponderem, adicione o valor do contrato ao total.
+                totalContratos += contrato.valorTotal(); // Supondo que você tenha um método para obter o valor do contrato.
+            }
         }
-    }
 
-    return totalContratos + this.baseSalario;
-}
+        return totalContratos + this.baseSalario;
+    }
 
 }

@@ -1,30 +1,30 @@
 package edu.exercicios.introducaopoo.stringbuilder;
 
-import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Post {
-    private static SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-    private Date momento;
+    private static DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+    private LocalDateTime momento;
     private String titulo;
     private String conteudo;
     private Integer likes;
     private List<Comentario> listComentario = new ArrayList<>();
 
-    public Post(Date momento, String titulo, String conteudo, Integer likes) {
+    public Post(LocalDateTime momento, String titulo, String conteudo, Integer likes) {
         this.momento = momento;
         this.titulo = titulo;
         this.conteudo = conteudo;
         this.likes = likes;
     }
 
-    public Date getMomento() {
+    public LocalDateTime getMomento() {
         return momento;
     }
 
-    public void setMomento(Date momento) {
+    public void setMomento(LocalDateTime momento) {
         this.momento = momento;
     }
 
