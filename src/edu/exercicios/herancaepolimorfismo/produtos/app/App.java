@@ -19,7 +19,6 @@ public class App {
         System.out.print("Quantidade de produtos: ");
         Integer qtdProdutos = sc.nextInt();
         for (int i = 0; i < qtdProdutos; i++) {
-            sc.nextLine();
             System.out.printf("Dados do %d° poduto:\n", i+1);
             System.out.print("Produto: Novo, Usado, Importado (n/u/i)? ");
             Character opcao = sc.next().charAt(0);
@@ -30,21 +29,18 @@ public class App {
             Double preco = sc.nextDouble();
             switch (opcao) {
                 case 'n':
-                    Produto produto = new Produto(nome, preco);
-                    listProdutos.add(produto);
+                    listProdutos.add(new Produto(nome, preco));
                     break;
                 case 'u':
                     sc.nextLine();
                     System.out.print("Data de fabricação (DD/MM/AAAA): ");
                     Date dataFabricacao = dataFormatada.parse(sc.nextLine());
-                    Produto produto2 = new ProdutoUsado(nome, preco, dataFabricacao);
-                    listProdutos.add(produto2);
+                    listProdutos.add(new ProdutoUsado(nome, preco, dataFabricacao));
                     break;
                 case 'i':
                     System.out.print("Taxa de importação: ");
                     Double taxaImport = sc.nextDouble();
-                    Produto produto3 = new ProdutoImportado(nome, preco, taxaImport);
-                    listProdutos.add(produto3);
+                    listProdutos.add(new ProdutoImportado(nome, preco, taxaImport));
                     break;
                 default:
                     break;

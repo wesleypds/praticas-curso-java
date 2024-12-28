@@ -14,7 +14,7 @@ public class App {
         System.out.print("Números de funcionários: ");
         Integer numeroFuncionarios = sc.nextInt();
         for (int i = 0; i < numeroFuncionarios; i++) {
-            sc.nextLine();
+            //sc.nextLine();
             System.out.printf("Dados do funcionário %d°:\n", i + 1);
             System.out.print("Terceirizado (s/n): ");
             Character op = sc.next().charAt(0);
