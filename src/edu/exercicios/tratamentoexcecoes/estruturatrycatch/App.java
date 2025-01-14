@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
+        System.out.println("Começo do programa!");
         metodo1();
         System.out.println("Fim do programa!");
     }
