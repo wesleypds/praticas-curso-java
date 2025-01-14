@@ -1,8 +1,7 @@
 package edu.exercicios.tratamentoexcecoes.excecoespersonalizadas.solucaoboa.app;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -12,29 +11,26 @@ import edu.exercicios.tratamentoexcecoes.excecoespersonalizadas.solucaoboa.model
 public class App {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        DateTimeFormatter dateFormatada = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
         try {
             System.out.print("Número do quarto: ");
             int numeroQuarto = sc.nextInt();
-            sc.nextLine();
             System.out.print("Data de check-in (DD/MM/AAAA): ");
-            Date checkin = dateFormat.parse(sc.nextLine());
+            LocalDate checkin = LocalDate.parse(sc.next(), dateFormatada);
             System.out.print("Data de checkout (DD/MM/AAAA): ");
-            Date checkout = dateFormat.parse(sc.nextLine());
+            LocalDate checkout = LocalDate.parse(sc.next(), dateFormatada);
 
             
             Reserva reserva = new Reserva(numeroQuarto, checkin, checkout);
             System.out.println("Reserva: " + reserva);
             System.out.println("\nInsira os dados para atualizar a reserva:");
             System.out.print("Data de check-in (DD/MM/AAAA): ");
-            checkin = dateFormat.parse(sc.nextLine());
+            checkin = LocalDate.parse(sc.next(), dateFormatada);
             System.out.print("Data de checkout (DD/MM/AAAA): ");
-            checkout = dateFormat.parse(sc.nextLine());
+            checkout = LocalDate.parse(sc.next(), dateFormatada);
             reserva.atualizaDatas(checkin, checkout);
             System.out.println("Reserva: " + reserva);
-        } catch (ParseException e) {
-            System.out.println("Formato da data é inválido.");
         } catch (InputMismatchException e) {
             System.out.println("Dado de entrada inválido.");
         } catch (ExcecaoPersonalizada e) {
