@@ -1,8 +1,8 @@
 package edu.exercicios.tratamentoexcecoes.excecoespersonalizadas.solucaoruim.app;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 import edu.exercicios.tratamentoexcecoes.excecoespersonalizadas.solucaoruim.model.entidades.Reserva;
@@ -10,24 +10,23 @@ import edu.exercicios.tratamentoexcecoes.excecoespersonalizadas.solucaoruim.mode
 public class App {
     public static void main(String[] args) throws ParseException {
         Scanner sc = new Scanner(System.in);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
         System.out.print("Número do quarto: ");
         int numeroQuarto = sc.nextInt();
-        sc.nextLine();
         System.out.print("Data de check-in (DD/MM/AAAA): ");
-        Date checkin = dateFormat.parse(sc.nextLine());
+        LocalDate checkin = LocalDate.parse(sc.next(), dateFormat);
         System.out.print("Data de checkout (DD/MM/AAAA): ");
-        Date checkout = dateFormat.parse(sc.nextLine());
+        LocalDate checkout = LocalDate.parse(sc.next(), dateFormat);
 
-        if (!checkout.before(checkin)) {
+        if (!checkout.isBefore(checkin)) {
             Reserva reserva = new Reserva(numeroQuarto, checkin, checkout);
             System.out.println("Reserva: " + reserva);
             System.out.println("\nInsira os dados para atualizar a reserva:");
             System.out.print("Data de check-in (DD/MM/AAAA): ");
-            checkin = dateFormat.parse(sc.nextLine());
+            checkin = LocalDate.parse(sc.next(), dateFormat);
             System.out.print("Data de checkout (DD/MM/AAAA): ");
-            checkout = dateFormat.parse(sc.nextLine());
+            checkout = LocalDate.parse(sc.next(), dateFormat);
             String erro = reserva.atualizaDatas(checkin, checkout);
             if (erro == null) {
                 System.out.println("Reserva: " + reserva);

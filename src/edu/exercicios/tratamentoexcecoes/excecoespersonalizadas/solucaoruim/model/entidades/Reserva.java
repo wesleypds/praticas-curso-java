@@ -1,20 +1,19 @@
 package edu.exercicios.tratamentoexcecoes.excecoespersonalizadas.solucaoruim.model.entidades;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Reserva {
     private Integer numeroQuarto;
-    private Date checkin;
-    private Date checkout;
+    private LocalDate checkin;
+    private LocalDate checkout;
 
-    private static SimpleDateFormat dateFormatada = new SimpleDateFormat("dd/MM/yyyy");
+    private static DateTimeFormatter dateFormatada = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public Reserva() {
     }
 
-    public Reserva(Integer numeroQuarto, Date checkin, Date checkout) {
+    public Reserva(Integer numeroQuarto, LocalDate checkin, LocalDate checkout) {
         this.numeroQuarto = numeroQuarto;
         this.checkin = checkin;
         this.checkout = checkout;
@@ -28,25 +27,24 @@ public class Reserva {
         this.numeroQuarto = numeroQuarto;
     }
 
-    public Date getCheckin() {
+    public LocalDate getCheckin() {
         return checkin;
     }
 
-    public Date getCheckout() {
+    public LocalDate getCheckout() {
         return checkout;
     }
 
-    public Long duracao() {
-        long dif = checkout.getTime() - checkin.getTime();
-        return TimeUnit.DAYS.convert(dif, TimeUnit.MILLISECONDS);
+    public Integer duracao() {
+        return checkout.getDayOfYear() - checkin.getDayOfYear();
     }
 
-    public String atualizaDatas(Date checkin, Date checkout) {
-        Date agora = new Date();
-        if (checkout.before(agora) || checkin.before(agora)) {
+    public String atualizaDatas(LocalDate checkin, LocalDate checkout) {
+        LocalDate agora = LocalDate.now();
+        if (checkout.isBefore(agora) || checkin.isBefore(agora)) {
             return "Erro na reserva: As datas de reserva devem ser datas futuras.";
         }
-        if (!checkout.after(checkin)) {
+        if (!checkout.isAfter(checkin)) {
             return "Erro na reserva: A data de Check-out tem que ser maior que a data de Check-in.";
         }
         this.checkin = checkin;
