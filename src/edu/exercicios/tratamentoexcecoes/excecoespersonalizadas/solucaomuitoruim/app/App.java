@@ -34,9 +34,9 @@ public class App {
             System.out.print("Data de checkout (DD/MM/AAAA): ");
             checkout = LocalDate.parse(sc.next(), dateFormat);
 
-            LocalDate agora = LocalDate.now();
+            now = LocalDate.now();
 
-            if (checkout.isBefore(agora) || checkin.isBefore(agora)) {
+            if (checkout.isBefore(now) || checkin.isBefore(now)) {
                 System.out.println("Erro na reserva: As datas de reserva devem ser datas futuras.");
             } else if (!checkout.isAfter(checkin)) {
                 System.out.println("Erro na reserva: A data de Check-out tem que ser maior que a data de Check-in.");
