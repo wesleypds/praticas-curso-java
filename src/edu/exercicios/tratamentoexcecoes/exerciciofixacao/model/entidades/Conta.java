@@ -5,12 +5,8 @@ import edu.exercicios.tratamentoexcecoes.exerciciofixacao.model.excecoes.ContaEx
 public class Conta {
     private Integer numero;
     private String titular;
-    private Double saldo;
+    private Double saldo = 0.0;
     private Double limiteDeSaque;
-
-    public Conta() {
-        saldo = 0.0;
-    }
 
     public Conta(Integer numero, String titular, Double saldo, Double limiteDeSaque) {
         this.numero = numero;
@@ -49,7 +45,7 @@ public class Conta {
 
     public void saca(Double valor) throws ContaExcecoes {
         if (valor > limiteDeSaque) {
-            throw new ContaExcecoes("Erro no saque: O valor é maior que o limite de saque");
+            throw new ContaExcecoes("Erro no saque: O valor ultrapassa o limite de saque");
         }
         if (valor > saldo) {
             throw new ContaExcecoes("Erro no saque: O valor é maior que o saldo");
