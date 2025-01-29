@@ -1,4 +1,4 @@
-package edu.exercicios.acessobancodedados.demorecuperardados.app;
+package edu.exercicios.acessobancodedados.recuperardados.app;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.exercicios.acessobancodedados.db.DB;
-import edu.exercicios.acessobancodedados.demorecuperardados.models.Department;
+import edu.exercicios.acessobancodedados.recuperardados.models.Department;
 
 public class App {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package edu.exercicios.acessobancodedados.demorecuperardados.models;
+package edu.exercicios.acessobancodedados.recuperardados.models;
 
 public class Department {
     private Integer id;
